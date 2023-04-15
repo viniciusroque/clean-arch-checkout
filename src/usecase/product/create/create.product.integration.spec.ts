@@ -27,16 +27,15 @@ describe("Integration test create a product use case", () => {
     const productRepository = new ProductRepository();
     const productUseCase = new CreateProductUseCase(productRepository);
     const input = {
-      id: "product1",
       name: "Product 1",
       price: 300
     }
     const result = await productUseCase.execute(input);
     const productDb = await ProductModel.findOne({
-      where: { id: input.id }
+      where: { id: result.id }
     });
 
-    expect(productDb.id).toBe(input.id);
+    expect(productDb.id).toBe(result.id);
     expect(productDb.name).toBe(input.name);
     expect(productDb.price).toBe(input.price);
   });

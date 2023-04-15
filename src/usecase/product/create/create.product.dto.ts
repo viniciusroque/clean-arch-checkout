@@ -1,5 +1,5 @@
 export interface InputCreateProductDto {
-  id: string,
+  id?: string,
   name: string,
   price: number
 }
