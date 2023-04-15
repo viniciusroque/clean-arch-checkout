@@ -1,6 +1,7 @@
 export interface InputListCustomerDto {}
 
-type Customers = {
+type Customer = {
+  id: string,
   name: string,
   address: {
     street: string,
@@ -11,5 +12,5 @@ type Customers = {
 }
 
 export interface OutputListCustomerDto {
-  customers: Customers[]
+  customers: Customer[]
 }
