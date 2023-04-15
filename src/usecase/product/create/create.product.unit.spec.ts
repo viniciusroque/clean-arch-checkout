@@ -15,21 +15,21 @@ describe("Unit test create a product use case", () => {
     const productRepository = MockRepository();
     const productUseCase = new CreateProductUseCase(productRepository);
     const input = {
-      id: "product1",
       name: "Product 1",
       price: 300
     }
     const result = await productUseCase.execute(input);
 
     expect(productRepository.create).toBeCalled();
-    expect(result).toStrictEqual(input);
+    expect(result.id).toBeDefined();
+    expect(result.name).toBe(input.name);
+    expect(result.price).toBe(input.price);
   });
 
   it("Should throw an error when name is empty", async () => {
     const productRepository = MockRepository();
     const productUseCase = new CreateProductUseCase(productRepository);
     const input = {
-      id: "product1",
       name: "",
       price: 300
     }
